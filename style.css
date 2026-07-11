@@ -1,0 +1,55 @@
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Georgia', serif;
+    color: white;
+    background: linear-gradient(rgba(13, 27, 42, 0.85), rgba(13, 27, 42, 0.85)), 
+                url('imagens/fundo-gbf.jpg');
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+}
+
+h1 { color: #fca311; margin-bottom: 10px; text-shadow: 2px 2px 4px #000; }
+
+.card-container { width: 320px; height: 480px; perspective: 1000px; cursor: pointer; margin: 20px 0; }
+.card { width: 100%; height: 100%; position: relative; transform-style: preserve-3d; transition: transform 0.8s; }
+.card.flip { transform: rotateY(180deg); }
+
+/* No seu style.css, atualize a classe .card-face */
+.card-face {
+    position: absolute; 
+    width: 100%; 
+    height: 100%; 
+    backface-visibility: hidden;
+    border-radius: 15px; 
+    border: 3px solid #fca311;
+    
+    /* MUDANÇA AQUI: */
+    background-size: cover;          /* Preenche todo o container */
+    background-position: center;     /* Centraliza o foco da imagem */
+    background-repeat: no-repeat;
+    
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+}
+
+.card-front { background-color: #1b263b; }
+.card-back { background-color: #415a77; transform: rotateY(180deg); }
+
+@keyframes brilho {
+    0% { box-shadow: 0 0 10px #fca311; }
+    50% { box-shadow: 0 0 40px #fca311, 0 0 60px #fca311; }
+    100% { box-shadow: 0 0 10px #fca311; }
+}
+.invocando { animation: brilho 0.8s infinite; border-color: white !important; }
+
+.card-description { font-size: 1.5em; font-weight: bold; color: #fca311; opacity: 0; transition: opacity 0.5s; margin-top: 10px; }
+.card-description.show { opacity: 1; }
+
+
